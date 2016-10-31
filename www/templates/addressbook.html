@@ -1,0 +1,36 @@
+<ion-view title="Address Book" hide-back-button="true">
+  <ion-content padding="true" class="has-header">
+    <ion-item>
+      <center><img src="img/splash_small.png"></center>
+    </ion-item>
+    <ion-list ng-hide="newcontact">
+      <ion-item ng-repeat="contact in contacts" class="item-avatar" on-double-tap="newPayment(contact)">
+        <img ng-src="{{contact.avatar}}">
+        <h2>{{contact.username}}</h2>
+        <p>{{contact.address}}</p>
+        <div ng-if="!contact.nodelete">
+          <ion-option-button class="button-dark  icon ion-trash-a" on-tap="discardContact(contact)"></ion-option-button>
+        </div>
+      </ion-item>
+    </ion-list>
+    <button on-tap="newContact()" ng-hide="newcontact" style="border-radius:100px 100px 100px 100px;" class="button button-positive  icon ion-plus"></button>
+    <div class="list card" ng-hide="!newcontact">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">NAME</span>
+        <input type="text" placeholder="" ng-model="newcontact.username" ng-change="updateAvatar(newcontact)">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">ADDRESS</span>
+        <input type="text" placeholder="" ng-model="newcontact.address">
+      </label>
+      <div class="button-bar">
+        <ion-radio name="gender" ng-value="'male'" ng-model="newcontact.gender" default>Male</ion-radio>
+        <ion-radio name="gender" ng-value="'female'" ng-model="newcontact.gender">Female</ion-radio>
+      </div>
+      <div class="button-bar">
+        <button on-tap="saveContact()" class="button button-calm  icon ion-android-checkbox-outline"></button>
+        <button on-tap="discardContact()" class="button button-dark  icon ion-android-cancel"></button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

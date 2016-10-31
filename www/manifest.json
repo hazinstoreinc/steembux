@@ -1,0 +1,12 @@
+
+{
+  "name": "Steembux Steem Wallet",
+  "short_name": "steembux",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

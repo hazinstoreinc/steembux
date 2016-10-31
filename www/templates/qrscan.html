@@ -1,0 +1,9 @@
+<ion-view title="Scan Qr Code">
+  <ion-content padding="true" class="has-header">
+      <center><canvas id="qr-canvas" style="width: 300px; height: 300px;"></canvas></center>
+      <video autoplay="true" id="videoElement" hidden></video>
+      <div class="button-bar">
+        <button class="button button-calm  button-block icon-right ion-paperclip" on-tap="onCancelScan()">Cancel</button>
+      </div>
+  </ion-content>
+</ion-view>

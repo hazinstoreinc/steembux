@@ -1,0 +1,32 @@
+<ion-view title="{{settings.username}} History">
+  <ion-content padding="true" class="has-header">
+    <ion-item>
+      <center><img src="img/splash_small.png"></center>
+    </ion-item>
+    <div class="list card">
+      <ion-item class="item-avatar" ui-sref="app.settings">
+        <img ng-src="{{settings.avatar}}">
+        <h2>{{(settings.username ? settings.username : "NEW USER")}}</h2>
+        <p>{{(!settings.hideBalance ? ("$"+account.sbd_balance || "0.00") : "...")}}</p>
+      </ion-item>
+      <ion-list>
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="search">
+        </label>
+        <ion-item ng-repeat="tx in history">
+          <!--<img>-->
+          <h2>{{tx.op}}</h2>
+          <p>
+            $ {{tx.amount || tx.reward || tx.interest || tx.sbd_payout}}
+            <br> {{tx.from ? ""+tx.from+" -> "+tx.to : ""}}
+            <br> {{tx.timestamp | date:'medium'}}
+          </p>
+          <ion-option-button class="button-positive">DETAILS</ion-option-button>
+          <ion-option-button class="button-balanced">ARCHIVE</ion-option-button>
+          <ion-option-button class="button-assertive">DELETE</ion-option-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

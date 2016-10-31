@@ -1,0 +1,76 @@
+<ion-view title="Settings">
+  <ion-content padding="true" class="has-header">
+    <ion-item>
+      <center><img src="img/splash_small.png"></center>
+    </ion-item>
+    <ion-list>
+      <ion-item class="item-avatar" ui-sref="/settings">
+        <img ng-src="{{settings.avatar}}">
+        <h2>{{(settings.username ? settings.username : "NEW USER")}}</h2>
+        <p>{{(!settings.hideBalance ? ("$"+account.sbd_balance || "$0.00") : "...")}}</p>
+      </ion-item>
+      <ion-item>
+        <div class="button-bar">
+          <ion-toggle toggle-class="toggle-positive" ng-model="settings.hideBalance" ng-change="onSettingsChange()">Hide Balance</ion-toggle>
+          <ion-radio name="gender" ng-value="'male'" ng-model="settings.gender" default>Male</ion-radio>
+          <ion-radio name="gender" ng-value="'female'" ng-model="settings.gender">Female</ion-radio>      
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-toggle toggle-class="toggle-positive" ng-model="settings.blocktradesAPI" ng-change="onSettingsChange()">Enable Blocktrades API</ion-toggle>
+      </ion-item>
+      <ion-item class="item-divider">{{(settings.username ? settings.username : "SLIDE EACH FIELD TO UNLOCK")}}</ion-item>
+
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">NAME</span>
+          <input type="text" placeholder="" ng-model="settings.username" ng-disabled="!namefld">
+        </label>
+        <ion-option-button ng-class="(namefld ? 'button-positive' : 'button-energized')" ng-click="namefld = !namefld">{{(namefld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+      </ion-item>
+
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">PIN</span>
+          <input type="password" placeholder="" ng-model="settings.pin" ng-disabled="!pinfld">
+          <ion-option-button ng-class="(pinfld ? 'button-positive' : 'button-energized')" ng-click="pinfld = !pinfld">{{(pinfld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+        </label>
+      </ion-item>
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Master Password for {{settings.username}}</span>
+          <input type="password" placeholder="........................" ng-model="settings.masterpass" ng-disabled="!passfld">
+          <ion-option-button ng-class="(passfld ? 'button-positive' : 'button-energized')" ng-click="passfld = !passfld">{{(passfld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+        </label>
+      </ion-item>
+      
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">POSTING KEY</span>
+          <input type="text" placeholder="5J......................" ng-model="settings.keys.posting" ng-disabled="!postingfld">
+          <ion-option-button ng-class="(postingfld ? 'button-positive' : 'button-energized')" ng-click="postingfld = !postingfld">{{(postingfld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+        </label>
+      </ion-item>
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">ACTIVE KEY</span>
+          <input type="text" placeholder="5J......................" ng-model="settings.keys.active" ng-disabled="!activefld">
+          <ion-option-button ng-class="(activefld ? 'button-positive' : 'button-energized')" ng-click="activefld = !activefld">{{(activefld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+        </label>
+      </ion-item>
+      <ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">MEMO KEY</span>
+          <input type="text" placeholder="5J......................" ng-model="settings.keys.memo" ng-disabled="!memofld">
+          <ion-option-button ng-class="(memofld ? 'button-positive' : 'button-energized')" ng-click="memofld = !memofld">{{(memofld ? "LOCK" : "UNLOCK")}}</ion-option-button>
+        </label>
+      </ion-item>
+    
+    </ion-list>
+    <form class="list">
+
+    </form>
+    <button ng-click="saveSettings()" class="button button-balanced  button-block">Save</button>
+    <button ng-click="resetSettings()" class="button button-royal  button-block">Cancel</button>
+  </ion-content>
+</ion-view>

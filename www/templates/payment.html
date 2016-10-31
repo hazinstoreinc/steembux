@@ -1,0 +1,53 @@
+<ion-view title="Payments">
+  <ion-content padding="true" class="has-header">
+    <ion-item>
+      <center><img src="img/splash_small.png"></center>
+    </ion-item>
+    <div class="list card">
+      <ion-item class="item-avatar">
+        <img ng-src="{{payment.avatar}}">
+        <h2>{{payment.name || payment.dest}}</h2>
+        <p>{{payment.amount}}</p>
+      </ion-item>
+      <center>
+        <qrcode data="{{paymentUrl}}" size="{{qrWidth}}"></qrcode>
+      </center>
+
+      <form class="list">
+        <label class="item item-input">
+          <span class="input-label icon-right ion-android-camera"  on-tap="scanStart()">Destination</span>
+          <input type="text" placeholder="{{payment.dest}}" ng-model="payment.dest" default="{{payment.dest}}" ng-change="updatePaymentUrl()">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">$</span>
+          <input type="number" placeholder="" ng-model="payment.amount" default="0.00" ng-change="updatePaymentUrl()">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Memo</span>
+          <input type="text" placeholder="memo" ng-model="payment.memo" ng-change="updatePaymentUrl()">
+        </label>
+        <div class="list">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Currency
+        </div>
+        <select>
+          <option selected>Steem Dollars</option>
+          <option>Steem</option>
+          <option>Steem Power</option>
+          <option>Bitcoin</option>
+          <option>Litecoin</option>
+        </select>
+      </label>
+
+</div>
+
+      </form>
+      <div class="button-bar">
+        <button class="button button-calm  button-block icon-left ion-social-usd" on-tap="sendPayment()">Send</button>
+        <button class="button button-calm  button-block icon-right ion-paperclip">Receive</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

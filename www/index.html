@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>steembux</title>
+
+    <link rel="manifest" href="manifest.json">
+
+   
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    
+    <script src="lib/steemjs-lib/build/steemjs-lib.min.js"></script>
+    <script src="lib/adapterjs/publish/adapter.min.js"></script>
+    <script src="lib/qrcode/qrcode.js"></script>
+    <script src="lib/qrcode/qrcode_UTF8.js"></script>
+    
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+   
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    
+    <script src="js/app.js"></script>
+    <script src="lib/qrcode/angular-qrcode.js"></script>
+    <!-- Note:  The qrcode and qrcode-reader are completely different things please don't futz with the loading order -->
+    <script src="lib/qrcode-reader/index.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+
+  <body ng-app="steembux">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
