@@ -10,17 +10,17 @@ I have left it off this version because I am personally having issues with bower
 
 This is NOT a stable release it is intended for your own personal experimentation.
 To get it working you will need to do the following
->sudo apt install npm nodejs
->npm install -g cordova ionic
->git clone https://github.com/svk31/steemjs-lib
->git clone https://github.com/hazinstoreinc/steembux.git
->cd steembux/www
->bower add steemjs-lib
->cd ..
->ionic platform add android
->ionic plugin add phonegap-barcodescanner
->ionic run
-
+`sudo apt install npm nodejs
+npm install -g cordova ionic
+git clone https://github.com/svk31/steemjs-lib
+git clone https://github.com/hazinstoreinc/steembux.git
+cd steembux/www
+bower add steemjs-lib
+cd ..
+ionic platform add android
+ionic plugin add phonegap-barcodescanner
+ionic run
+`
 Note that I have added a fallback for QR scanning to allow testing in the browser and am working to add this to my own fork of the phonegap-barcodescanner but it will only be able to support standard QR codes, none of the extra barcode types supported by the cordova plugin will be available.
 I will commit that as soon as the work is complete on it, because it annoys me to not be able to test functionality in the browser when that's kinda the point of phonegap.
 Steembux is part of the [havin.store](www.havin.store) project.
